@@ -1,0 +1,119 @@
+/* JuliaGiac site styles, shared by https://juliagiac.github.io/ and the
+   project sites. Palette from brand/README.md. */
+:root {
+  --ink: #222326; --paper: #F5F5F7; --muted: #5f6368;
+  --red: #CB3C33; --green: #389826; --purple: #9558B2; --blue: #4063D8;
+  --fg: #1d1d1f; --bg: #ffffff; --card: #f6f7f9; --border: #e1e4e8;
+  --accent: #4063D8;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fg: #e6e6e6; --muted: #a0a4a8; --bg: #16171a; --card: #1f2125;
+          --border: #30343a; --accent: #8fa6ff; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--fg); background: var(--bg); }
+a { color: var(--accent); }
+.wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.5rem; }
+h2 { font-size: 1.6rem; margin: 3rem 0 .5rem; }
+h3 { margin: .1rem 0 .2rem; font-size: 1.25rem; }
+.note, .role, .step { color: var(--muted); }
+
+/* Hero */
+.hero { background: var(--ink); color: var(--paper); padding: 3.5rem 0; }
+.hero a { color: var(--paper); }
+.hero-inner { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+.hero-logo { width: 180px; height: 180px; flex: none; }
+.hero h1 { font-size: 3.2rem; margin: 0; letter-spacing: -.02em; }
+.lead { font-size: 1.3rem; color: #c8cbd0; margin: .4rem 0 1.4rem; }
+.btn { display: inline-block; padding: .6rem 1.1rem; border-radius: 8px;
+       border: 1px solid #50545a; text-decoration: none; font-weight: 600;
+       margin: 0 .5rem .5rem 0; }
+.hero .btn.primary { background: var(--paper); color: var(--ink);
+                     border-color: var(--paper); }
+.btn:hover { filter: brightness(1.1); }
+
+/* Intro + example */
+.intro { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+         margin-top: 2.5rem; align-items: start; }
+@media (max-width: 760px) { .intro { grid-template-columns: 1fr; } }
+.example .label { margin: 0 0 .4rem; font-weight: 600; color: var(--muted); }
+pre { background: var(--card) !important; border: 1px solid var(--border);
+      border-radius: 8px; padding: .9rem 1rem; overflow-x: auto;
+      font-size: .9rem; line-height: 1.5; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+/* Stack diagram: one band per layer, top of the stack first */
+.stack { list-style: none; padding: 0; margin: 1rem 0 0; }
+.stack li { margin: 0 0 6px; }
+.stack a { display: grid; grid-template-columns: 14rem 1fr auto; gap: 1rem;
+           align-items: center; padding: .75rem 1.1rem; border-radius: 8px;
+           text-decoration: none; color: var(--fg); background: var(--card);
+           border: 1px solid var(--border); border-left: 6px solid var(--band); }
+.stack a:hover { border-color: var(--band); }
+.stack .name { font-weight: 700; }
+.stack .tech { font-size: .85rem; color: var(--muted);
+               font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+@media (max-width: 640px) {
+  .stack a { grid-template-columns: 1fr; gap: .1rem; }
+}
+.layer-integration { --band: var(--purple); }
+.layer-package     { --band: var(--green); }
+.layer-bridge      { --band: var(--red); }
+.layer-binaries    { --band: var(--blue); }
+.layer-build       { --band: #8a8f98; }
+.layer-upstream    { --band: var(--ink); }
+@media (prefers-color-scheme: dark) { .layer-upstream { --band: var(--paper); } }
+
+/* Layer cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+         gap: 1rem; margin-top: 1rem; }
+.card { background: var(--card); border: 1px solid var(--border);
+        border-top: 4px solid var(--band); border-radius: 8px;
+        padding: 1.1rem 1.2rem; scroll-margin-top: 1rem; }
+.card p { margin: 0 0 .6rem; }
+.card .role { margin: 0 0 .6rem; font-weight: 600; }
+.step { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em;
+        margin: 0; }
+.links { list-style: none; padding: 0; margin: .4rem 0 0;
+         display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+
+footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border);
+         color: var(--muted); font-size: .9rem; }
+
+/* Project sites: a compact version of the home page hero */
+.site-header { background: var(--ink); color: var(--paper); padding: 1.6rem 0 0; }
+.site-header a { color: var(--paper); }
+.site-header .top { display: flex; align-items: center; gap: 1.1rem; }
+.site-header .top img { width: 64px; height: 64px; flex: none; }
+.crumbs { margin: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: -.01em; }
+.crumbs a { text-decoration: none; }
+.crumbs .org { color: #a0a4a8; font-weight: 600; }
+.crumbs .sep { color: #6b7076; margin: 0 .35rem; font-weight: 400; }
+.site-header .tagline { margin: .2rem 0 0; color: #c8cbd0; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0 1.6rem; margin-top: 1.2rem; }
+.site-nav a { text-decoration: none; font-weight: 600; padding: .55rem 0;
+              border-bottom: 3px solid transparent; color: #c8cbd0; }
+.site-nav a:hover { color: var(--paper); }
+.site-nav a[aria-current="page"] { color: var(--paper);
+                                   border-bottom-color: var(--paper); }
+.site-nav .back { margin-left: auto; font-weight: 500; }
+.prose h1 code, .prose h2 code, .prose h3 code { background: none; border: 0;
+                                                padding: 0; font-size: .92em; }
+
+/* Reading pages */
+.prose { max-width: 50rem; margin-top: 2.2rem; }
+.prose h1 { font-size: 2.1rem; margin: 0 0 1rem; letter-spacing: -.01em; }
+.prose h2 { margin-top: 2.4rem; padding-bottom: .3rem;
+            border-bottom: 1px solid var(--border); }
+.prose h3 { margin-top: 1.6rem; }
+.prose li { margin: .2rem 0; }
+.prose table { border-collapse: collapse; margin: 1rem 0; width: 100%; }
+.prose th, .prose td { border: 1px solid var(--border); padding: .45rem .7rem;
+                       text-align: left; vertical-align: top; }
+.prose th { background: var(--card); }
+.prose :not(pre) > code { background: var(--card); border: 1px solid var(--border);
+                          border-radius: 4px; padding: .05rem .3rem; font-size: .9em; }
+.prose blockquote { margin: 1rem 0; padding: .6rem 1rem; background: var(--card);
+                    border-left: 4px solid var(--accent); border-radius: 4px; }
